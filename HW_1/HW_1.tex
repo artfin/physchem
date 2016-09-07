@@ -1,0 +1,152 @@
+\documentclass[a4paper]{article}
+
+\usepackage{fullpage} % Package to use full page
+\usepackage{parskip} % Package to tweak paragraph skipping
+\usepackage{tikz} % Package for drawing
+\usepackage{amsmath}
+\usepackage{hyperref}
+
+\usepackage[T3]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{mhchem}
+
+\title{Физическая химия.  \\ Домашнее задание №1.}
+\author{Финенко Артем}
+\date{2016/07/09}
+
+\begin{document}
+
+\maketitle
+
+\section{Задание №1.}
+Сначала оценим значение \textit{p} по уравнению идеального газа:
+\begin{gather}
+p = \frac{n R T}{V} = 495.51 \ kPa \notag
+\end{gather}
+
+Для оценки значения \textit{p} по уравнению Ван-дер-Ваальса необходимо расчитать значения констант $a$, $b$, исходя из критических параметров.
+\begin{gather}
+T_c = 633.4 \ K \notag \\
+p_c = 4.52 \ MPa \notag \\ 
+a = \frac{27}{64} \frac{R^2 T_c^2}{p_c} = 25.88 \cdot 10^5 \  \frac{Pa \cdot l^2}{mol^2} \notag \\
+b = \frac{R T_c}{8 p_c} = 1.456 \cdot 10^{-1} \ \frac{l}{mol} \notag 
+\end{gather}
+
+Подставляя полученные значения в уравнение Ван-дер-Ваальса, получаем:
+\begin{gather}
+p = \frac{nRT}{V-nb} - \frac{n^2 a}{V^2} = 406.86 \ kPa \notag
+\end{gather}
+
+Итак, разница в значении давления при расчете по уравнениям идеального газа и Ван-дер-Ваальса:
+\begin{gather}
+p_{id.} - p_{real} = 495.51 \ kPa - 406.86 kPa = 88.65 \ kPa \notag
+\end{gather}
+
+\section{Задание №2.}
+
+\begin{center}
+\begin{tabular}{|*5{c|}}
+\hline
+$p$ & 0.25 & 0.50 & 0.75 & 1.00 \\ \hline
+$pV$ & 0.700292 & 0.700133 & 0.699972 & 0.699810 \\ \hline
+\end{tabular}
+\end{center}
+
+\begin{gather}
+T = 273 K \notag \\
+m (\ce{O}_2) = 1 g \notag
+\end{gather}
+
+Найдем методом МНК уравнение прямой на диаграмме $pV - p$, затем используем первый коэффициент в вириальном разложении по $p$ для нахождения $R$:
+\begin{gather}
+k = n \ (b - \frac{a}{RT} ) = -0.0006428 l \notag \\
+R = \frac{an}{(bn - x) T} = 0.0963293 \frac{atm \cdot l}{mol \cdot K}\notag
+\end{gather}
+
+\section{Задание №3.}
+
+\section{Задание №4.}
+Найдем коэффициенты вириального разложения по $p$:
+\begin{gather}
+\frac{p V}{R T} = 1 + B^\prime (T)\ p + C^\prime (T) \ p^2 + \cdots \notag 
+\end{gather}
+Находим уравнения, связывающие их коэффициенты, путем подстановки одного вириального разложения в другое:
+\begin{gather}
+\frac{p V}{R T} = 1 + B(T) \frac{1}{V} + C(T) \frac{1}{V^2} + \cdots = 1 + B^\prime (T) p + C^\prime (T) p^2 + \cdots \notag \\
+p = \frac{RT}{V} \left( 1 + B(T) \frac{1}{V} + C(T) \frac{1}{V^2} + \cdots \right) \notag \\
+1 + B \frac{1}{V} + C \frac{1}{V^2} + \cdots = 1 + B^\prime \frac{RT}{V} \left( 1 + B \frac{1}{V} + C \frac{1}{V^2} + \cdots \right)
++ C^\prime \left( \frac{RT}{V} \right)^2 \left( 1 + B \frac{1}{V} + C \frac{1}{V^2} + \cdots \right)= \notag \\
+= 1 + \frac{1}{V} RT B^\prime + \frac{1}{V^2} \left( B^\prime RT B + C^\prime R^2 T^2 \right) + \cdots \notag
+\end{gather}
+
+Приравнивая коэффициенты при одинаковых степенях $\frac{1}{V}$:
+\begin{gather}
+B = RT B^\prime \quad \implies \quad B^\prime = \frac{B}{RT} = \frac{b}{RT} - \frac{a}{(RT)^2} \notag \\
+C = B B^\prime RT + C^\prime (RT)^2 \quad \implies \quad C^\prime = \frac{C - B^2}{(RT)^2} = \frac{2ab}{(RT)^3} - \frac{a^2}{(RT)^4} \notag
+\end{gather}
+
+Итак:
+\begin{gather}
+\frac{pV}{RT} = 1 + \left( \frac{b}{RT} - \frac{a}{(RT)^2} \right) \ p + \left( \frac{2ab}{(RT)^3} - \frac{a^2}{(RT)^4} \right) \ p^2 + \cdots
+\end{gather}
+
+Ограничиваясь квадратичным членом в вириальном разложении определим точки минимума кривых на $pV$-диаграмме (очевидно, меньшим количеством членов ограничиться нельзя):
+\begin{gather}
+\left( \frac{\partial (pV)}{\partial p} \right)_{p_{min}} = RT \left[ \left( \frac{b}{RT} - \frac{a}{(RT)^2} \right) + 2 p_{min} \left( \frac{2ab}{(RT)^3} - \frac{a^2}{(RT)^4} \right) \right] = 0 \notag \\
+p_{min} = \frac{(RT)^2}{2} \frac{a - bRT}{2abRT - a^2}
+\end{gather}
+
+Т.к. точки, описывающие кривую Бойля, одновременно являются точками кривых на $pV$-диаграмме и являются точками минимума этих самых кривых, то для получения уравнения кривой Бойля разумно выразить из соотношения $(2)$ $T = T(p)$ и использовать его в вириальном разложении $(1)$. В таком случае мы получим уравнение вида:
+
+\begin{gather}
+pV = f(p) \notag
+\end{gather}
+
+Разумно из выражения $(2)$ выражать не $T = T(p)$, а произведение $RT$ как функцию $p$. Однако, даже ограничиваясь квадратным членом в вириальном разложении $(1)$, получаем кубическое уравнение относительно $RT$:
+\begin{gather}
+b(RT)^3 - a(RT)^2 + 4abp(RT) - 2pa^2 = 0 \notag
+\end{gather}
+
+\section{Задание №5.}
+\begin{gather}
+pV = RT + ApT - Bp \notag
+\end{gather}
+
+Если критическая точка $(p_c, V_c, T_c)$ существует для такого газа, то она должна удовлетворять следующей системе уравнений:
+\begin{gather}
+\left\{
+\begin{aligned}
+f(p_c, V_c, T_c) = 0 \\
+\left( \frac{\partial p}{\partial V} \right)_{T_c} = 0 \\
+\left( \frac{\partial^2 p}{\partial V^2} \right)_{T_c} = 0
+\end{aligned}
+\right. 
+\quad 
+\implies
+\quad 
+\left\{
+\begin{aligned}
+p_c V_c = RT_c + A p_c T_c - B p_c \\
+R T_c + A p_c T_c - B p_c = 0 \\
+R T_c + A p_c T_c - B p_c = 0
+\end{aligned}
+\right.
+\quad
+\implies
+\quad
+\left\{
+\begin{aligned}
+R T_c + A p_c &T_c - B p_c = 0 \\
+p_c V_c &= 0
+\end{aligned}
+\right. 
+\notag
+\end{gather}
+
+Физически разумного решения у этой системы уравнений не имеется, следовательно газ, имеющий такое уравнение состояния, не обладает критической точкой.
+
+
+
+\end{document}
