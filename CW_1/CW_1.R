@@ -29,13 +29,16 @@ for (i in 1 : 15) {
   cat("Generated: ", i, "\n")
 }
 
-T_critical <- 
+T_critical <- 100 * (8 * a) / (27 * b * 8.2)
+q_crit <- generate_arrays(T_critical)
 
 # Plotting isothermes
 plot(q[[5]][[1]], q[[5]][[2]], main = "vdW", xlab = "V", type = "l", ylab = "p", xlim = c(0, 3), ylim = c(0, 100), lwd = 2)
-for (i in 6 : 10) {
+for (i in 6 : 6) {
   points(q[[i]][[1]], q[[i]][[2]], type = "l", col= i, lwd = 2)
 }
+points(q_crit[[1]], q_crit[[2]], type = "l", col = "red", lwd = 2)
+
 
 # spinodal <- array()
 # spinodal <- a * (q[[1]][[1]] - 2 * b) / (q[[1]][[1]]^3)
@@ -151,3 +154,34 @@ func <- splinefun(x, y, method="natural",  ties = mean)
 x_for_binoidal <- seq(0, 1, by = 0.01)
 points(x_for_binoidal, func(x_for_binoidal), col = "green", type = "l", lwd = 2)
 points(x, y, col = "green", pch = 20)
+
+generate_amagat <- function(Temp) {
+  p <- array()
+  pv <- array()
+  for (i in 1 : 100000) {
+    p[i] <- i * 0.001
+  }
+  
+  B_1 <- 8.314 * Temp
+  B_2 <- b - a / B_1
+  B_3 <- ((2 * a * b) / B_1^2 - a^2 / B_1^3)
+  pv <- B_1 + B_2 * p + B_3 * p^2
+  cat(B_1, "\n")
+  cat(B_2, "\n")
+  cat(B_3, "\n")
+  
+  res <- list()
+  res[[1]] <- p
+  res[[2]] <- pv
+  return(res)
+}
+
+q_amagat <- generate_amagat(300)
+plot(q_amagat[[1]], q_amagat[[2]], col = "red", lwd = 1)
+
+
+
+
+
+
+
