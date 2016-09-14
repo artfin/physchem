@@ -4,7 +4,7 @@
 \usepackage{parskip} % Package to tweak paragraph skipping
 \usepackage{tikz} % Package for drawing
 \usepackage{amsmath}
-\usepackage{hyperref}
+% \usepackage{hyperref}
 
 \usepackage[T3]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -46,6 +46,8 @@ p_{id.} - p_{real} = 495.51 \ kPa - 406.86 kPa = 88.65 \ kPa \notag
 
 \section{Задание №2.}
 
+ПЕРЕСМОТРЕТЬ
+
 \begin{center}
 \begin{tabular}{|*5{c|}}
 \hline
@@ -55,6 +57,8 @@ $pV$ & 0.700292 & 0.700133 & 0.699972 & 0.699810 \\ \hline
 \end{center}
 
 \begin{gather}
+a = 1.360 \ \frac{l^2 \cdot atm}{mol^2} \notag \\
+b = 0.3913 \ \frac{l}{mol} \notag \\
 T = 273 K \notag \\
 m (\ce{O}_2) = 1 g \notag
 \end{gather}
@@ -62,7 +66,7 @@ m (\ce{O}_2) = 1 g \notag
 Найдем методом МНК уравнение прямой на диаграмме $pV - p$, затем используем первый коэффициент в вириальном разложении по $p$ для нахождения $R$:
 \begin{gather}
 k = n \ (b - \frac{a}{RT} ) = -0.0006428 l \notag \\
-R = \frac{an}{(bn - x) T} = 0.0963293 \frac{atm \cdot l}{mol \cdot K}\notag
+R = \frac{a \cdot n}{T \cdot (bn - k)} = 0.0963293 \frac{atm \cdot l}{mol \cdot K}\notag
 \end{gather}
 
 \section{Задание №3.}
@@ -77,7 +81,7 @@ R = \frac{an}{(bn - x) T} = 0.0963293 \frac{atm \cdot l}{mol \cdot K}\notag
 \frac{p V}{R T} = 1 + B(T) \frac{1}{V} + C(T) \frac{1}{V^2} + \cdots = 1 + B^\prime (T) p + C^\prime (T) p^2 + \cdots \notag \\
 p = \frac{RT}{V} \left( 1 + B(T) \frac{1}{V} + C(T) \frac{1}{V^2} + \cdots \right) \notag \\
 1 + B \frac{1}{V} + C \frac{1}{V^2} + \cdots = 1 + B^\prime \frac{RT}{V} \left( 1 + B \frac{1}{V} + C \frac{1}{V^2} + \cdots \right)
-+ C^\prime \left( \frac{RT}{V} \right)^2 \left( 1 + B \frac{1}{V} + C \frac{1}{V^2} + \cdots \right)= \notag \\
++ C^\prime \left( \frac{RT}{V} \right)^2 \left( 1 + B \frac{1}{V} + C \frac{1}{V^2} + \cdots \right)^2 + \cdots = \notag \\
 = 1 + \frac{1}{V} RT B^\prime + \frac{1}{V^2} \left( B^\prime RT B + C^\prime R^2 T^2 \right) + \cdots \notag
 \end{gather}
 
@@ -128,20 +132,11 @@ f(p_c, V_c, T_c) = 0 \\
 \quad 
 \left\{
 \begin{aligned}
-p_c V_c = RT_c + A p_c T_c - B p_c \\
-R T_c + A p_c T_c - B p_c = 0 \\
-R T_c + A p_c T_c - B p_c = 0
+p_c V_c = RT_c + A p_c T_c &- B p_c \\
+\frac{RT_c}{(V_c - AT_c + B)^2} &= 0 \\
+\frac{2RT_c}{(V_c - AT_c + B)^3} &= 0
 \end{aligned}
 \right.
-\quad
-\implies
-\quad
-\left\{
-\begin{aligned}
-R T_c + A p_c &T_c - B p_c = 0 \\
-p_c V_c &= 0
-\end{aligned}
-\right. 
 \notag
 \end{gather}
 

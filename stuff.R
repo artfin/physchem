@@ -60,3 +60,17 @@ curve(fun(x), -10, 10)
 abline(h = 0, lty = 3)
 
 uni <- uniroot.all(fun, c(-10, 10))
+
+# CO2
+a <- 3.592
+b <- 0.0426
+
+Temp <- 300
+p <- 1
+x <- p * b
+
+cubic_fun <- function(y) {
+  res <- y^3 - (x + 100 * 8.314 * Temp) * y^2 + a * x * y - a * x^2
+  return(res)
+}
+uni <- uniroot.all(cubic_fun, c(-100, 100))

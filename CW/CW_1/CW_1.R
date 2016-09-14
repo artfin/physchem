@@ -24,8 +24,8 @@ generate_arrays <- function(Temp) {
 }
 
 q <- list()
-for (i in 1 : 15) {
-  q[[i]] <- generate_arrays(235 + i * 5)
+for (i in 1 : 7) {
+  q[[i]] <- generate_arrays(235 + i * 10)
   cat("Generated: ", i, "\n")
 }
 
@@ -33,24 +33,25 @@ T_critical <- 100 * (8 * a) / (27 * b * 8.2)
 q_crit <- generate_arrays(T_critical)
 
 # Plotting isothermes
-plot(q[[5]][[1]], q[[5]][[2]], main = "vdW", xlab = "V", type = "l", ylab = "p", xlim = c(0, 3), ylim = c(0, 100), lwd = 2)
-for (i in 6 : 6) {
+plot(q[[1]][[1]], q[[1]][[2]], main = "vdW", xlab = "V", type = "l", ylab = "p", xlim = c(0, 3), ylim = c(0, 100), lwd = 2)
+for (i in 2 : length(q)) {
   points(q[[i]][[1]], q[[i]][[2]], type = "l", col= i, lwd = 2)
 }
 points(q_crit[[1]], q_crit[[2]], type = "l", col = "red", lwd = 2)
 
 
-# spinodal <- array()
-# spinodal <- a * (q[[1]][[1]] - 2 * b) / (q[[1]][[1]]^3)
-# points(q[[1]][[1]], spinodal, type = "l", col = 1, lwd = 2)
+spinodal <- array()
+spinodal <- a * (q[[1]][[1]] - 2 * b) / (q[[1]][[1]]^3)
+points(q[[1]][[1]], spinodal, type = "l", col = "blue", lwd = 2, lty = 2)
 
 # maxima <- q[[1]][[2]][which(diff(sign(diff(q[[1]][[2]])))==-2) + 1]
 # minima <- q[[1]][[2]][which(diff(sign(diff(q[[1]][[2]])))==+2) + 1]
 
+# BINODAL
 binoidal_points <- list()
 binoidal_points_counter <- 1
 
-for (counter in 1 : 15) {
+for (counter in 1 : length(q)) {
   maxima <- q[[counter]][[2]][which(diff(sign(diff(q[[counter]][[2]])))==-2) + 1]
   minima <- q[[counter]][[2]][which(diff(sign(diff(q[[counter]][[2]])))==+2) + 1]
 
@@ -114,7 +115,7 @@ for (counter in 1 : 15) {
         cat(s, ":  ", s_in_left - s_in_right, "\n")
         if (abs(s_in_left - s_in_right) < 0.05) {
           cat("Found it! \n")
-          abline(h = h, col = counter, lwd = 2)
+         # abline(h = h, col = counter, lwd = 2)
           cat("h: ", h, "\n")
           cat("s1: ", s_in_left, "\n")
           cat("s2: ", s_in_right, "\n")
@@ -155,16 +156,17 @@ x_for_binoidal <- seq(0, 1, by = 0.01)
 points(x_for_binoidal, func(x_for_binoidal), col = "green", type = "l", lwd = 2)
 points(x, y, col = "green", pch = 20)
 
+# AMAGAT
 generate_amagat <- function(Temp) {
   p <- array()
   pv <- array()
-  for (i in 1 : 100000) {
+  for (i in 1 : 10000) {
     p[i] <- i * 0.001
   }
   
-  B_1 <- 8.314 * Temp
-  B_2 <- b - a / B_1
-  B_3 <- ((2 * a * b) / B_1^2 - a^2 / B_1^3)
+  B_1 <- 8.314 * Temp / 100
+  B_2 <- b - (100 * a) / (8.314 * Temp)
+  B_3 <- (10^4 * (2 * a * b) / (8.314 * Temp)^2 - 10^6 * a^2 / (8.314 * Temp)^3)
   pv <- B_1 + B_2 * p + B_3 * p^2
   cat(B_1, "\n")
   cat(B_2, "\n")
@@ -177,7 +179,8 @@ generate_amagat <- function(Temp) {
 }
 
 q_amagat <- generate_amagat(300)
-plot(q_amagat[[1]], q_amagat[[2]], col = "red", lwd = 1)
+plot(q_amagat[[1]], q_amagat[[2]], col = "red", lwd = 2, type = "l")
+
 
 
 
