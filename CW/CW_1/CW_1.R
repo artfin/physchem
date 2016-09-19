@@ -156,35 +156,43 @@ x_for_binoidal <- seq(0, 1, by = 0.01)
 points(x_for_binoidal, func(x_for_binoidal), col = "green", type = "l", lwd = 2)
 points(x, y, col = "green", pch = 20)
 
-# AMAGAT
-generate_amagat <- function(Temp) {
-  p <- array()
-  pv <- array()
-  for (i in 1 : 10000) {
-    p[i] <- i * 0.001
-  }
-  
-  B_1 <- 8.314 * Temp / 100
-  B_2 <- b - (100 * a) / (8.314 * Temp)
-  B_3 <- (10^4 * (2 * a * b) / (8.314 * Temp)^2 - 10^6 * a^2 / (8.314 * Temp)^3)
-  pv <- B_1 + B_2 * p + B_3 * p^2
-  cat(B_1, "\n")
-  cat(B_2, "\n")
-  cat(B_3, "\n")
-  
-  res <- list()
-  res[[1]] <- p
-  res[[2]] <- pv
-  return(res)
+### 
+
+amagat <- list()
+plot(p, p*v, type = "l", lwd = 2, ylim = c(0, 100), xlim = c(0, 2000))
+
+Temp <- array()
+for (s in 1 : 30) {
+  Temp[s] <- 240 + s * 30
 }
 
-q_amagat <- generate_amagat(300)
-plot(q_amagat[[1]], q_amagat[[2]], col = "red", lwd = 2, type = "l")
+for (counter in 1 : length(Temp)) {
+  amagat[[counter]] <- list()
+  v <- array()
 
+  for (i in 1 : 50000) {
+    v <- c(v, 0.05 + 0.01 * i)
+  }
+  
+  p <- array()
+  p <- (R * Temp[counter]) / (v - b) - a / (v * v)
+  points(p, p*v, type = "l", col = counter, lwd = 2)
+  
+  amagat[[counter]][[1]] <- p
+  amagat[[counter]][[2]] <- p*v
+}
 
+minima_x <- array()
+minima_y <- array()
+for (counter in 1 : length(amagat)) {
+  minima_x[counter] <- amagat[[counter]][[1]][which(diff(sign(diff(amagat[[counter]][[2]]))) == +2) + 1]
+  minima_y[counter] <- amagat[[counter]][[2]][which(diff(sign(diff(amagat[[counter]][[2]]))) == +2) + 1]
+  
+  points(minima_x[counter], minima_y[counter], pch = 19, col = "skyblue")
+}
 
-
-
-
+#func <- splinefun(minima_x, minima_y, method="natural",  ties = mean)
+#x <- seq(0, 400, by = 0.1)
+#points(x, func(x), col = "green", type = "l", lwd = 2)
 
 
