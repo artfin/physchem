@@ -24,8 +24,8 @@ generate_arrays <- function(Temp) {
 }
 
 q <- list()
-for (i in 1 : 15) {
-  q[[i]] <- generate_arrays(235 + i * 5)
+for (i in 1 : 7) {
+  q[[i]] <- generate_arrays(235 + i * 10)
   cat("Generated: ", i, "\n")
 }
 
@@ -33,24 +33,25 @@ T_critical <- 100 * (8 * a) / (27 * b * 8.2)
 q_crit <- generate_arrays(T_critical)
 
 # Plotting isothermes
-plot(q[[5]][[1]], q[[5]][[2]], main = "vdW", xlab = "V", type = "l", ylab = "p", xlim = c(0, 3), ylim = c(0, 100), lwd = 2)
-for (i in 6 : 6) {
+plot(q[[1]][[1]], q[[1]][[2]], main = "vdW", xlab = "V", type = "l", ylab = "p", xlim = c(0, 3), ylim = c(0, 100), lwd = 2)
+for (i in 2 : length(q)) {
   points(q[[i]][[1]], q[[i]][[2]], type = "l", col= i, lwd = 2)
 }
 points(q_crit[[1]], q_crit[[2]], type = "l", col = "red", lwd = 2)
 
 
-# spinodal <- array()
-# spinodal <- a * (q[[1]][[1]] - 2 * b) / (q[[1]][[1]]^3)
-# points(q[[1]][[1]], spinodal, type = "l", col = 1, lwd = 2)
+spinodal <- array()
+spinodal <- a * (q[[1]][[1]] - 2 * b) / (q[[1]][[1]]^3)
+points(q[[1]][[1]], spinodal, type = "l", col = "blue", lwd = 2, lty = 2)
 
 # maxima <- q[[1]][[2]][which(diff(sign(diff(q[[1]][[2]])))==-2) + 1]
 # minima <- q[[1]][[2]][which(diff(sign(diff(q[[1]][[2]])))==+2) + 1]
 
+# BINODAL
 binoidal_points <- list()
 binoidal_points_counter <- 1
 
-for (counter in 1 : 15) {
+for (counter in 1 : length(q)) {
   maxima <- q[[counter]][[2]][which(diff(sign(diff(q[[counter]][[2]])))==-2) + 1]
   minima <- q[[counter]][[2]][which(diff(sign(diff(q[[counter]][[2]])))==+2) + 1]
 
@@ -114,7 +115,7 @@ for (counter in 1 : 15) {
         cat(s, ":  ", s_in_left - s_in_right, "\n")
         if (abs(s_in_left - s_in_right) < 0.05) {
           cat("Found it! \n")
-          abline(h = h, col = counter, lwd = 2)
+         # abline(h = h, col = counter, lwd = 2)
           cat("h: ", h, "\n")
           cat("s1: ", s_in_left, "\n")
           cat("s2: ", s_in_right, "\n")
@@ -155,33 +156,43 @@ x_for_binoidal <- seq(0, 1, by = 0.01)
 points(x_for_binoidal, func(x_for_binoidal), col = "green", type = "l", lwd = 2)
 points(x, y, col = "green", pch = 20)
 
-generate_amagat <- function(Temp) {
-  p <- array()
-  pv <- array()
-  for (i in 1 : 100000) {
-    p[i] <- i * 0.001
-  }
-  
-  B_1 <- 8.314 * Temp
-  B_2 <- b - a / B_1
-  B_3 <- ((2 * a * b) / B_1^2 - a^2 / B_1^3)
-  pv <- B_1 + B_2 * p + B_3 * p^2
-  cat(B_1, "\n")
-  cat(B_2, "\n")
-  cat(B_3, "\n")
-  
-  res <- list()
-  res[[1]] <- p
-  res[[2]] <- pv
-  return(res)
+### 
+
+amagat <- list()
+plot(p, p*v, type = "l", lwd = 2, ylim = c(0, 100), xlim = c(0, 2000))
+
+Temp <- array()
+for (s in 1 : 30) {
+  Temp[s] <- 240 + s * 30
 }
 
-q_amagat <- generate_amagat(300)
-plot(q_amagat[[1]], q_amagat[[2]], col = "red", lwd = 1)
+for (counter in 1 : length(Temp)) {
+  amagat[[counter]] <- list()
+  v <- array()
 
+  for (i in 1 : 50000) {
+    v <- c(v, 0.05 + 0.01 * i)
+  }
+  
+  p <- array()
+  p <- (R * Temp[counter]) / (v - b) - a / (v * v)
+  points(p, p*v, type = "l", col = counter, lwd = 2)
+  
+  amagat[[counter]][[1]] <- p
+  amagat[[counter]][[2]] <- p*v
+}
 
+minima_x <- array()
+minima_y <- array()
+for (counter in 1 : length(amagat)) {
+  minima_x[counter] <- amagat[[counter]][[1]][which(diff(sign(diff(amagat[[counter]][[2]]))) == +2) + 1]
+  minima_y[counter] <- amagat[[counter]][[2]][which(diff(sign(diff(amagat[[counter]][[2]]))) == +2) + 1]
+  
+  points(minima_x[counter], minima_y[counter], pch = 19, col = "skyblue")
+}
 
-
-
+#func <- splinefun(minima_x, minima_y, method="natural",  ties = mean)
+#x <- seq(0, 400, by = 0.1)
+#points(x, func(x), col = "green", type = "l", lwd = 2)
 
 
