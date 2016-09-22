@@ -1,0 +1,43 @@
+\documentclass[a4paper]{article}
+
+\usepackage{fullpage} % Package to use full page
+\usepackage{parskip} % Package to tweak paragraph skipping
+\usepackage{tikz} % Package for drawing
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{gensymb} % for degree symbol
+
+\usepackage[T3]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\begin{document}
+\section*{Задача №1}
+\subsection*{Идеальный газ.}
+\begin{gather}
+A = \int_{V_3}^{V_1} p \ dV - p(V_1 - V_2) = \nu R T_1 \ln \frac{V_1}{V_3} - p (V_1 - V_2) = \nu R T_1 \ln 2 - \frac{1}{2} p V_1 = \nu R T_1 \ (\ln 2 - \frac{1}{2} ) \notag
+\end{gather}
+
+\subsection*{Газ Ван-дер-Ваальса.}
+\begin{gather}
+A = \int_{V_3}^{V_1} p \ dV - p_1 (V_1 - V_2) = \nu R T_1 \ln \frac{V_1 - b}{V_3 - b} + a \nu^2 \left( \frac{1}{V_1} - \frac{1}{V_3} \right) - \frac{1}{2} p_1 V_1 = \nu R T_1 \ln \frac{V_1 - b}{\frac{1}{2} V_1 - b} - \frac{a \nu^2}{V_1}  - \frac{1}{2} p_1 V_1 \notag
+\end{gather}
+
+\section*{Задача №3}
+\begin{gather}
+\delta Q = dU + pdV \quad \implies \quad \frac{\delta Q}{dV} = \frac{\partial U}{\partial V} + p \notag \\
+\eta = \frac{\Delta T}{T} = \frac{A}{Q} \notag \\
+Q = A \frac{T}{\Delta T} \quad \implies \quad \delta Q = T \ \frac{\delta A}{dT} \notag \\
+\frac{\delta Q}{dV} = T \frac{\partial}{\partial T} \left( \frac{\delta A}{dV} \right) = T \left( \frac{\partial p}{\partial T} \right) \notag \\
+T \left( \frac{\partial p}{\partial T} \right) = \frac{\partial U}{\partial V} + p \notag
+\end{gather}
+
+\section*{Задача №4}
+\begin{gather}
+Q = Q_{12} + Q_{23} + Q_{31} = c_v (T_3 - T_1) - c_p (T_3 - T_1) + RT_3 \ln \frac{V_3}{V_1} \notag \\
+Q = A = RT_3 \ln \frac{V_3}{V_1} + p_1 (V_1 - V_3) \notag \\
+(c_v - c_p) (T_3 - T_1)  = p_1 (V_1 - V_3) = - R (T_3 - T_1) \notag \\
+c_p - c_v = R \notag
+\end{gather}
+
+\end{document}
