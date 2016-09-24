@@ -93,6 +93,8 @@ $\Delta_f H^{\circ}_{298} (\ce{C_2H_6}) = -84.67 \ \textit{кДж} / \textit{м�
 $\Delta_f H^{\circ}_{298} (\ce{C_2H_4}) = 52.28 \ \textit{кДж} / \textit{моль} \notag$ 
 \end{flushleft}
 
+\vspace*{-0.6cm}
+
 \begin{gather}
 \Delta_r H^{\circ}_{298} = \Delta_f H^{\circ}_{298} (\ce{C_2H_6}) - \Delta_f H^{\circ}_{298} (\ce{C_2H_4}) = -136.95 \ \textit{кДж} / \textit{моль} \notag
 \end{gather}
@@ -105,6 +107,19 @@ $\Delta_c H^{\circ}_{298} (\ce{H_2}) = -285.84 \ \textit{кДж} / \textit{мо�
 
 \begin{gather}
 \Delta_r H^{\circ} = \Delta_c H^{\circ}_{298} (\ce{C_2H_4}) - \Delta_c H^{\circ}_{298} (\ce{H_2}) + \Delta_c H^{\circ}_{298} (\ce{C_2H_6}) = - 136.93 \ \textit{кДж} / \textit{моль} \notag
+\end{gather}
+
+\begin{gather}
+E(C-C) = 348  \ \textit{кДж} / \textit{моль} \notag \\
+E(C=C) = 614  \ \textit{кДж} / \textit{моль} \notag \\
+E(C-H) = 413  \ \textit{кДж} / \textit{моль} \notag \\
+E(H-H) = 436  \ \textit{кДж} / \textit{моль} \notag
+\end{gather}
+
+\vspace*{-0.6cm}
+
+\begin{gather}
+\Delta_r H^{\circ} = E(C-C) + 2 E(C-H) - E(C=C) - E(H-H) = 124 \ \textit{кДж} / \textit{моль} \notag
 \end{gather}
 
 \section{Задача №4}
@@ -142,13 +157,30 @@ $\Delta_r H^{\circ}_{349} \hspace{5cm}$
 \end{gather}
 
 \section{Задача №5}
+\begin{minipage}{0.5\linewidth}
+\quad \quad $\ce{4 HCl + O2 -> 2 Cl2 + 2H2O}$
+\end{minipage}
+\hfill
+\begin{minipage}{0.5\linewidth}
+$\Delta_r H^{\circ}_T$
+\end{minipage}
+
+\begin{align}
+\Delta_f& H^{\circ}_{T} (\ce{HCl}) = \Delta_f H^{\circ}_{298} (\ce{HCl}) + \int_{298}^{T} c_p (T^\prime) dT^\prime = -92310 + 25.53 \cdot T^\prime \bigg{|}_{298}^{T} + 2.30 \cdot 10^{-3} \cdot (T^\prime)^2 \bigg{|}^{T}_{298} - 1.09 \cdot 10^{5} (T^\prime)^{-1} \bigg{|}^{T}_{298} \notag \\
+\Delta_f& H^{\circ}_{T} (\ce{O2}) = \Delta_f H^{\circ}_{298} (\ce{O2}) + \int_{298}^{T} c_p (T^\prime) dT^\prime = 37.03 \cdot T^\prime \bigg{|}_{298}^{T} + 0.33 \cdot 10^{-3} (T^\prime)^2 \bigg{|}^{T}_{298} + 2.85 \cdot 10^{5} (T^\prime)^{-1} \bigg{|}^{T}_{298} \notag \\
+\Delta_f& H^{\circ}_{T} (\ce{Cl2}) = \Delta_f H^{\circ}_{298} (\ce{Cl2}) + \int_{298}^{T} c_p (T^\prime) dT^\prime = 31.46 \cdot T^\prime \bigg{|}_{298}^{T} + 1.69 \cdot 10^{-3}  (T^\prime)^2 \bigg{|}^{T}_{298} + 3.77 \cdot 10^5 (T^\prime)^{-1} \bigg{|}_{298}^{T} \notag \\
+\Delta_f& H^{\circ}_{T} (\ce{H2O}) = \Delta_f H^{\circ}_{298} (\ce{H2O}) + \int_{298}^{T} c_p (T^\prime) dT^\prime = -241810 + 30.00 \cdot T^\prime \bigg{|}_{298}^{T} + 5.35 \cdot 10^{-3} (T^\prime)^2 \bigg{|}_{298}^{T} - 0.33 \cdot 10^5 (T^\prime)^{-1} \bigg{|}_{298}^{T} \notag
+\end{align}
+
 \begin{gather}
-\Delta_f H^{\circ}_{T} (\ce{HCl}) = \Delta_f H^{\circ}_{298} + \int_{298}^{T} c_p (T^\prime) dT^\prime = -92310 + 25.53 \cdot T^\prime \bigg{|}_{298}^{T} + 2.30 \cdot 10^{-3} \cdot (T^\prime)^2 \bigg{|}^{T}_{298} - 1.09 \cdot 10^{5} (T^\prime)^{-1} \bigg{|}^{T}_{298} \notag \\
-\Delta_f H^{\circ}_{T} (\ce{O2}) = \Delta_f H^{\circ}_{298} + \int_{298}^{T} c_p (T^\prime) dT^\prime = 37.03 \cdot T^\prime \bigg{|}_{298}^{T} + 0.33 \cdot 10^{-3} (T^\prime)^2 \bigg{|}^{T}_{298} + 2.85 \cdot 10^{5} (T^\prime)^{-1} \bigg{|}^{T}_{298} \notag \\
-\Delta_f H^{\circ}_{T} (\ce{Cl2}) = \Delta_f H^{\circ}_{298} + \int_{298}^{T} c_p (T^\prime) dT^\prime = 31.46 \cdot T^\prime \bigg{|}_{298}^{T} + 1.69 \cdot 10^{-3}  (T^\prime)^2 \bigg{|}^{T}_{298} + 3.77 \cdot 10^5 (T^\prime)^{-1} \bigg{|}_{298}^{T} \notag \\
-\Delta_f H^{\circ}_{T} (\ce{H2O}) = \Delta_f H^{\circ}_{298} + \int_{298}^{T} c_p (T^\prime) dT^\prime = -241810 + 30.00 \cdot T^\prime \bigg{|}_{298}^{T} + 5.35 \cdot 10^{-3} (T^\prime)^2 \bigg{|}_{298}^{T} - 0.33 \cdot 10^5 (T^\prime)^{-1} \bigg{|}_{298}^{T} \notag \\
-\Delta_r H^{\circ}_{T} = -114.38 + \notag
+\Delta_r H^{\circ}_{T} = -112.763 - 1.623 \cdot 10^{-2} \ T + 4.55 \cdot 10^{-6} \ T^2 + 8.39 \cdot 10^2 (T)^{-1} \notag
 \end{gather}
 
+\vspace*{-0.5cm}
+
+\begin{gather}
+\Delta_r H^{\circ}_{298} = -114.38 \ \textit{кДж} / \textit{моль} \notag \\
+\Delta_r H^{\circ}_{400} = -116.43 \ \textit{кДж} / \textit{моль} \notag
+\end{gather}
 
 \end{document}
