@@ -1,5 +1,6 @@
 beta <- 1
 delta <- 2
+N <- 20
 
 func <- function(x, lim1, lim2, lim3) {
   summ <- 0
@@ -21,7 +22,6 @@ plot(x, func(x, 10, 10, 10), type = "l", col = "darkorchid", lwd = 2)
 # points(x, func(x, 10, 10, 10), pch = 19, col = "skyblue")
 abline(h = 0, col = "coral", lwd = 2, lty = 2)
 
-N <- 20
 generate_points <- function(n, x1, x2) {
   
   points <- list()
