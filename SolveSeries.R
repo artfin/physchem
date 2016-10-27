@@ -1,6 +1,4 @@
-beta <- 1
-delta <- 2
-N <- 20
+N <- 40
 
 func <- function(x, lim1, lim2, lim3) {
   summ <- 0
@@ -17,10 +15,28 @@ func <- function(x, lim1, lim2, lim3) {
   return(res)
 }
 
-x <- seq(-100, 100, 1)
-plot(x, func(x, 10, 10, 10), type = "l", col = "darkorchid", lwd = 2)
-# points(x, func(x, 10, 10, 10), pch = 19, col = "skyblue")
-abline(h = 0, col = "coral", lwd = 2, lty = 2)
+func(18.980, 50, 50, 50)
+
+beta <- 1.75
+delta <- 0.23
+
+x <- seq(0, 100, 0.05)
+plot(x, func(x, 50, 50, 50, beta, delta), type = "l", col = "darkorchid", lwd = 2, 
+     xlab = expression(eta[RP]), ylab = expression(phi[r]))
+Lines <- list(bquote(paste("Çàâèñèìîñòü ôàêòîğà ıôôåêòèâíîñòè ", eta[RP] , " îò ìîäóëÿ Òèëëå ", phi[r], " ïğè ")),
+              bquote(paste("ãåîìåòğè÷åñêèõ ïàğàìåòğàõ ", beta, "= 1.75, ", delta, "= 0.23")))
+mtext(do.call(expression, Lines),side=3,line=1:0)
+
+beta <- 2.25
+delta <- 0.9
+
+x <- seq(0, 100, 0.05)
+plot(x, func(x, 50, 50, 50), type = "l", col = "darkorchid", lwd = 2, 
+     xlab = expression(eta[RP]), ylab = expression(phi[r]))
+Lines <- list(bquote(paste("Çàâèñèìîñòü ôàêòîğà ıôôåêòèâíîñòè ", eta[RP] , " îò ìîäóëÿ Òèëëå ", phi[r], " ïğè ")),
+              bquote(paste("ãåîìåòğè÷åñêèõ ïàğàìåòğàõ ", beta, "= 2.25, ", delta, "= 0.9")))
+mtext(do.call(expression, Lines),side=3,line=1:0)
+
 
 generate_points <- function(n, x1, x2) {
   
@@ -121,4 +137,4 @@ find_solution <- function(y, xlim1, xlim2, precision) {
 }
 
 # x from -0.5 to 1
-res <- find_solution(0.37, 1, 100, 0.0001)
+res <- find_solution(0.7, 19, 20, 0.0001)
