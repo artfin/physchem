@@ -1,0 +1,105 @@
+\documentclass[14pt]{article}
+
+\usepackage{amsmath}
+\usepackage{mhchem}
+
+\usepackage{fullpage} % Package to use full page
+\usepackage{parskip} % Package to tweak paragraph skipping
+\usepackage{tikz} % Package for drawing
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{gensymb} % for degree symbol
+
+\usepackage[T3]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage{float}
+\usepackage{chemfig}
+
+% defining newcolumntype
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+\title{Вращательная спектроскопия. \\ Домашнее задание.}
+\author{Финенко Артем}
+\date{2016/28/10}
+
+\begin{document}
+
+\maketitle
+
+\section*{Задача 7.1.}
+
+\begin{gather}
+\ce{{}^6 LiF} \notag \\ 
+E_r^{(1)} = B \ J (J+1) \bigg{|}_{J=1} = 2B \notag \\
+E_r^{(2)} = B \ J (J+1) \bigg{|}_{J=0} = 0 \notag \\
+\Delta E_r = 2B \quad \implies \quad B = \frac{\Delta E_r}{2} = 1.497 \ cm^{-1} \notag \\ 
+l = \sqrt{\frac{h}{8 \pi^2 c \mu B}} = 1.57 \text{\AA} \notag
+\end{gather}
+
+\section*{Задача 7.2.}
+Предполагаем, что длины связи в $\ce{{}^6 LiF}$ и $\ce{{}^7LiF}$ совпадают.
+\begin{gather}
+B_1 = \frac{h}{8 \pi^2 c \mu_1 l^2} \quad \implies \quad B_2 = \frac{h}{8 \pi^2 c \mu_2 l^2} = B_1 \frac{\mu_1}{\mu_2} \notag \\
+B_1 = 89740.46 \ MHz \quad \implies \quad B_2 = 79997.21 \ MHz \notag
+\end{gather}
+
+\section*{Задача 7.5.}
+Изначально поместим начало отсчета в атом $\ce{H}$ молекулы цианоацетилена и определим положение центра масс.
+\begin{gather}
+x_{COM} = \frac{\sum_i m_i x_i}{\sum_i m_i} = 3.00 \text{\AA} \notag
+\end{gather}
+
+В системе отсчета, связанной с центром масс, найдем главные компоненты тензора инерции.
+\begin{gather}
+I_{aa} = \sum_i m_i (y_i^2 + z_i^2) = 0 \notag \\
+I_{bb} = \sum_i m_i (x_i^2 + z_i^2) = 1.8597 \cdot 10^{-45} \ kg \cdot m^2 \notag \\
+I_{cc} = \sum_i m_i (x_i^2 + y_i^2) = I_{bb} \notag \\
+I_{bb} = I_{cc} > I_{aa} = 0 \notag
+\end{gather}
+
+Найдем вращательную постоянную $B$.
+\begin{gather}
+B = \frac{h}{8 pi^2 c I} = 0.1505 cm^{-1} = 4.513 \ GHz \notag
+\end{gather}
+
+\section*{Задача 7.6.}
+\renewcommand{\arraystretch}{1.6}
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|P{1.5cm}|P{2cm}|P{2cm}|P{2cm}|P{2cm}|}
+\hline
+& $I_{aa}, kg \cdot m^2$ & $I_{bb}, kg \cdot m^2$ & $I_{cc}, kg \cdot m^2$ & $B, GHz$  \\ \hline
+$\ce{CO2}$ & 0 & $7.65 \cdot 10^{-46}$ & $7.65 \cdot 10^{-46}$ & 10.967 \\ \hline
+$\ce{OCS}$ & 0 & $1.459 \cdot 10^{-45}$ & $1.459 \cdot 10^{-45}$ & 5.749 \\ \hline
+$\ce{O{}^{13}CS}$ & 0 & $1.464 \cdot 10^{-45}$ & $1.464 \cdot 10^{-45}$ & 5.731 \\ \hline
+$\ce{CS2}$ & 0 & $2.71 \cdot 10^{-46}$ & $2.71 \cdot 10^{-46}$ & 3.085 \\ \hline
+\end{tabular} 
+\end{center}
+\end{table}    
+
+Замена $\ce{{}^12C}$ на $\ce{{}^13 C}$ приводит к изменению вращательной постоянной только в случае $\ce{OCS}$. 
+
+\section*{Задача 7.8.}
+\begin{center}
+\ce{{}^{14} N {}^{16} O_2 {}^{35} Cl} \\ 
+[\baselineskip]
+\chemfig{(O-[1]N(-[7]O)(-[2]Cl))}
+\end{center}
+
+Определяем положение центра масс и относительно него вычисляем координаты атомов. Затем определяем главные компоненты тензора инерции и вращательные постоянные.
+
+\begin{table}[H]
+\begin{center}
+\begin{tabular}{|P{1.5cm}|P{3cm}|P{3cm}|P{3cm}|P{1.5cm}|P{1.5cm}|P{1.5cm}|}
+\hline
+ & $I_{aa}, kg \cdot m^2$ & $I_{bb}, kg \cdot m^2$ & $I_{cc}, kg \cdot m^2$ & A, GHz & B, GHz & C, GHz \\ \hline
+ \ce{NO2Cl} & $1.614 \cdot 10^{-45}$ & $6.336426 \cdot 10^{-46}$ & $2.248106 \cdot 10^{-45}$ & 5.198 & 13.244 & 3.733 \\ \hline
+\end{tabular}
+\end{center}
+\end{table} 
+
+
+\end{document}
