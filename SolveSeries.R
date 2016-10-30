@@ -21,7 +21,11 @@ beta <- 1.75
 delta <- 0.23
 
 x <- seq(0, 100, 0.05)
-plot(x, func(x, 50, 50, 50, beta, delta), type = "l", col = "darkorchid", lwd = 2, 
+y <- func(x, 50, 50, 50)
+
+write.csv(y, "C:/Users/User/Desktop/beta=1.75,delta=0.23.csv")
+
+plot(x, func(x, 50, 50, 50), type = "l", col = "darkorchid", lwd = 2, 
      xlab = expression(eta[RP]), ylab = expression(phi[r]))
 Lines <- list(bquote(paste("Çàâèñèìîñòü ôàêòîğà ıôôåêòèâíîñòè ", eta[RP] , " îò ìîäóëÿ Òèëëå ", phi[r], " ïğè ")),
               bquote(paste("ãåîìåòğè÷åñêèõ ïàğàìåòğàõ ", beta, "= 1.75, ", delta, "= 0.23")))
@@ -31,6 +35,10 @@ beta <- 2.25
 delta <- 0.9
 
 x <- seq(0, 100, 0.05)
+y <- func(x, 50, 50, 50)
+
+write.csv(x, y, "C:/Users/User/Desktop/beta=2.25,delta=0.9.csv")
+
 plot(x, func(x, 50, 50, 50), type = "l", col = "darkorchid", lwd = 2, 
      xlab = expression(eta[RP]), ylab = expression(phi[r]))
 Lines <- list(bquote(paste("Çàâèñèìîñòü ôàêòîğà ıôôåêòèâíîñòè ", eta[RP] , " îò ìîäóëÿ Òèëëå ", phi[r], " ïğè ")),
@@ -138,3 +146,5 @@ find_solution <- function(y, xlim1, xlim2, precision) {
 
 # x from -0.5 to 1
 res <- find_solution(0.7, 19, 20, 0.0001)
+
+
