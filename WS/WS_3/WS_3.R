@@ -3,8 +3,8 @@ Temperature <- c(1.635, 1.640, 1.645, 1.650, 1.655, 1.660, 1.665, 1.670, 1.090, 
 
 time <- seq(1,20,1) * 30
 
-plot(time, Temperature, type = "l", lwd = 2, col = "darkorchid", main = "Температура раствора",
-     xlab = "Время, с", ylab = "Температура")
+plot(time, Temperature, type = "l", lwd = 2, col = "darkorchid", main = "??????????? ????????",
+     xlab = "?????, ?", ylab = "???????????")
 points(time, Temperature, pch = 19, col = "darkolivegreen4")
 
 fit1 <- lm(Temperature[1:8] ~ time[1:8])
@@ -25,4 +25,7 @@ points(time_middle, time_middle_temp_up, pch = 19, col = "blue4")
 points(time_middle, time_middle_temp_down, pch = 19, col = "blue4")
 
 delta = time_middle_temp_up - time_middle_temp_down
-text(320, 1.38, "0.599 относительных \n единиц", col = "black", cex = 0.75)
+text(320, 1.38, "0.599 ????????????? \n ??????", col = "black", cex = 0.75)
+
+16.14 / (39 + 35.5) / 4.2 * 1000
+2090 * 0.6 / 51.58
