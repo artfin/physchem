@@ -150,7 +150,7 @@ plt.figure(3, figsize = (12, 16))
 plot3 = plot(plt)
 
 plot3._set_xlimiters(0, 5 * math.pow(10,-6))
-plot3._set_ylimeters(-10, 10)
+plot3._set_ylimeters(-1, 10)
 plot3._make_grid(5*math.pow(10,-7), 1)
 
 delta_adsorption_minus = [-delta_adsorption[i] for i in range(0, len(delta_adsorption))]
