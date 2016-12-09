@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 import math
 
 theta_vib = 3120.86
-k = 1.38 * math.pow(10, -23)
-Na = 6.022 * math.pow(10, 23)
+k = 1.38 * 10**(-23)
+Na = 6.022 * 10**(23)
 R = 8.314
 
 classical_limit = R
