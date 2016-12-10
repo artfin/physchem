@@ -6,13 +6,29 @@ startfile_path = "start.log"
 finishfile_path = "finish.log"
 outputfile_path = "output.log"
 
+title1 =  "------------------------------------"
+title2 = "#p opt b3lyp/6-31g geom=connectivity"
+title3 = "------------------------------------ \n"
+title4 = "-------------------"
+title5 = " Title Card Required"
+title6 = " -------------------\n"
+
 header1 = "                         Standard orientation:"
 header2 = "---------------------------------------------------------------------"
 header3 = " Center     Atomic      Atomic             Coordinates (Angstroms)"
 header4 = " Number     Number       Type             X           Y           Z"
 header5 = " ---------------------------------------------------------------------"
 
-stepsNumber = 2
+footer1 = "---------------------------------------------------------------------"
+
+footer2 = " GradGradGradGradGradGradGradGradGradGradGradGradGradGradGradGradGradGrad"
+
+footer3 = " GradGradGradGradGradGradGradGradGradGradGradGradGradGradGradGradGradGrad"
+
+footer4 = "---------------------------------------------------------------------"
+footer5 = "Normal termination of Gaussian 09"
+
+stepsNumber = 10
 
 class Atom(object):
 	def __init__(self, atom_number, nuclear_number, zero, x, y, z):
@@ -57,6 +73,15 @@ with open(finishfile_path) as inputfile:
 atoms_start = _read_atoms_positions(startFile)
 atoms_end = _read_atoms_positions(endFile)
 
+output = open(outputfile_path, mode = 'w')
+
+output.write(title1 + '\n' +
+			 title2 + '\n' + 
+			 title3 + '\n' + 
+			 title4 + '\n' + 
+			 title5 + '\n' + 
+			 title6 + '\n')
+
 for i in range(0, stepsNumber):
 
 	atoms_interim = [] 
@@ -68,9 +93,6 @@ for i in range(0, stepsNumber):
 		atom = Atom(atoms_start[j].atom_number, atoms_start[j].nuclear_number, atoms_start[j].zero, atom_pos_x, atom_pos_y, atom_pos_z)
 		atoms_interim.append(atom)
 
-	
-	output = open(outputfile_path, mode = 'w')
-
 	output.write(header1 + '\n' + 
 				 header2 + '\n' + 
 				 header3 + '\n' +
@@ -79,13 +101,49 @@ for i in range(0, stepsNumber):
 
 	for k in range(0, len(atoms_interim)):
 		output.write('      ' + 
-			 		 str(int(atoms_interim[k].atom_number)) + "          " +
-					 str(int(atoms_interim[k].nuclear_number)) + "           " + 
-					 str(int(atoms_interim[k].zero)) + "        " +
-					 str(atoms_interim[k].x) + "   " +
-					 str(atoms_interim[k].y) +  "   " +
+			 		 str(int(atoms_interim[k].atom_number)) + "\t\t" +
+					 str(int(atoms_interim[k].nuclear_number)) + "\t\t" + 
+					 str(int(atoms_interim[k].zero)) + "\t\t" +
+					 str(atoms_interim[k].x) + "\t" +
+					 str(atoms_interim[k].y) +  "\t" +
 					 str(atoms_interim[k].z) + "\n")
-	output.close()
+
+	if (i != (stepsNumber - 1)):
+		output.write(footer1 + '\n\n' + 
+					 footer2 + '\n')
+		if (i > 0):
+			output.write(' Step Number  ' + str(i) + '\n\n')
+		else:
+			output.write('\n')
+	
+		output.write(footer3 + '\n\n')
+
+	else:
+		output.write(footer1 + '\n\n' + 
+					 footer2 + '\n' + 
+					 'Step Number  ' + str(i + 1) + '\n\n')
+		
+		output.write(footer3 + '\n\n')
+
+		output.write(header1 + '\n' + 
+				 	 header2 + '\n' + 
+				 	 header3 + '\n' +
+				 	 header4 + '\n' +
+				 	 header5 + '\n')
+		
+		for k in range(0, len(atoms_end)):
+			output.write('      ' + 
+			 		 	str(int(atoms_end[k].atom_number)) + "\t\t" +
+					 	str(int(atoms_end[k].nuclear_number)) + "\t\t" + 
+					 	str(int(atoms_end[k].zero)) + "\t\t" +
+					 	str(atoms_end[k].x) + "\t" +
+					 	str(atoms_end[k].y) +  "\t" +
+					 	str(atoms_end[k].z) + "\n")
+
+		output.write(footer4 + '\n' + 
+					 footer5)
+
+output.close()
 
 
 
