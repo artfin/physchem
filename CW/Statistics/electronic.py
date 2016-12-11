@@ -38,42 +38,45 @@ class Electron(object):
 		return [temperature, maximum]
 
 # -------------------------------------------------------------
-#electron = Electron(1)
-#temperatures = np.arange(temp_start, temp_end, dtemp)
-#electronic_energy = [electron._electronic_energy(temperature) for temperature in temperatures]
-#electronic_capacity = [electron._electronic_capacity(temperature) for temperature in temperatures]
-#maximum = electron._find_maximum_capacity(electronic_capacity, temperatures)
+electron = Electron(3)
+temperatures = np.arange(temp_start, temp_end, dtemp)
+electronic_energy = [electron._electronic_energy(temperature) for temperature in temperatures]
+electronic_capacity = [electron._electronic_capacity(temperature) for temperature in temperatures]
+maximum = electron._find_maximum_capacity(electronic_capacity, temperatures)
 # -------------------------------------------------------------
 
 # -------------------------------------------------------------
 # ELECTRONIC ENERGY
-#plt.figure(figsize = (6, 8))
-#plt.plot(temperatures, electronic_energy)
-#plt.show()
-# -------------------------------------------------------------
-
-# -------------------------------------------------------------
-# ELECTRONIC CAPACITY
-#plt.figure(figsize = (6,8))
-#plt.plot(temperatures, electronic_capacity)
-#plt.show()
-# -------------------------------------------------------------
-
-temperatures = np.arange(temp_start, temp_end, dtemp)
-
-max_temperature = []
-glist = np.arange(1, 10, 1)
-
-for g in glist:
-	electron = Electron(g)
-	electronic_energy = [electron._electronic_energy(temperature) for temperature in temperatures]
-	electronic_capacity = [electron._electronic_capacity(temperature) for temperature in temperatures]
-	maximum = electron._find_maximum_capacity(electronic_capacity, temperatures)
-	max_temperature.append(maximum[0])
-
-# -------------------------------------------------------------
-# TEMPERATURE IN MAXIMUM FROM G
-plt.figure(figsize = (6,8))
-plt.scatter(glist, max_temperature)
+plt.figure(figsize = (6, 8))
+plt.plot(temperatures, electronic_energy)
 plt.show()
+# -------------------------------------------------------------
+
+# -------------------------------------------------------------
+#ELECTRONIC CAPACITY
+plt.figure(figsize = (6,8))
+plt.plot(temperatures, electronic_capacity)
+plt.show()
+# -------------------------------------------------------------
+
+
+# -------------------------------------------------------------
+# temperatures = np.arange(temp_start, temp_end, dtemp)
+
+# max_temperature = []
+# glist = np.arange(1, 100, 1)
+
+# for g in glist:
+# 	electron = Electron(g)
+# 	electronic_energy = [electron._electronic_energy(temperature) for temperature in temperatures]
+# 	electronic_capacity = [electron._electronic_capacity(temperature) for temperature in temperatures]
+# 	maximum = electron._find_maximum_capacity(electronic_capacity, temperatures)
+# 	max_temperature.append(maximum[0])
+# -------------------------------------------------------------
+
+# -------------------------------------------------------------
+# # TEMPERATURE IN MAXIMUM FROM G
+# plt.figure(figsize = (6,8))
+# plt.scatter(glist, max_temperature)
+# plt.show()
 # -------------------------------------------------------------
