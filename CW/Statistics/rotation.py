@@ -24,20 +24,18 @@ print theta_rot
 
 logging.info("rotational temperature: %s", theta_rot)
 
-j_max = 10
+j_max = 10	
 
 class Rotation(object):
 	def __init__(self):
 		logging.info("initializing rotation class")
 
 	def _rotational_partition_function(self, temperature):
-		abs_error = 10**(-7)
 		j = 0
-		summ = [0, 1]
+		summ = 0
 
-		while (abs(summ[1] - summ[0]) < abs_error and j < j_max):
-			summ[0] = summ[1]
-			summ[1] += (2 * j + 1) * m.exp(- theta_rot / temperature * j * (j + 1))
+		while (j < j_max):
+			summ += (2 * j + 1) * m.exp(- theta_rot / temperature * j * (j + 1))
 			j += 1
 
 		return summ
@@ -65,8 +63,8 @@ class Rotation(object):
 rotation = Rotation()
 
 temp_start = 1
-temp_end = 10000
-dtemp = 2
+temp_end = 10
+dtemp = 0.1
 
 # -------------------------------------------------------------
 temperatures = np.arange(temp_start, temp_end, dtemp)
@@ -80,7 +78,7 @@ rotational_capacity = rotation._rotational_capacity(temperatures, rotational_ene
 plt.figure(figsize = (6, 8))
 partition_function = [rotation._rotational_partition_function(temperature) for temperature in temperatures]
 plt.plot(temperatures, partition_function)
-plt.show()
+#plt.show()
 # -------------------------------------------------------------
 
 # -------------------------------------------------------------
@@ -89,7 +87,7 @@ plt.figure(figsize = (6, 8))
 x = [temperatures[i] for i in range(0, len(temperatures) - 1)]
 y = [rotational_energy[i] * Na / R for i in range(0, len(rotational_energy))]
 plt.plot(x, y)
-plt.show()
+#plt.show()
 # -------------------------------------------------------------
 
 # -------------------------------------------------------------
@@ -99,5 +97,6 @@ y = [rotational_capacity[i] * Na / R for i in range(0, len(rotational_capacity))
 x = [temperatures[i] / theta_rot for i in range(0, len(temperatures) - 2)]
 plt.plot(x, y)
 plt.plot(x, [1] * len(x), '-')
+plt.plot(x, [1.05] * len(x), '-')
 plt.show()
 # -------------------------------------------------------------
