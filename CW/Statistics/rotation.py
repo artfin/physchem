@@ -24,7 +24,7 @@ print theta_rot
 
 logging.info("rotational temperature: %s", theta_rot)
 
-j_max = 10	
+j_max = 3	
 
 class Rotation(object):
 	def __init__(self):
